@@ -280,7 +280,7 @@ class GameSession(
         }
     }
 
-    fun setPaused(v: Boolean) {
+    fun pauseGame(v: Boolean) {
         paused = v
         touch.reset()
         input0.clear()

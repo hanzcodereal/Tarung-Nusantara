@@ -131,7 +131,7 @@ class GameActivity : Activity() {
         val s = session ?: return
         if (resultShown || pauseShown || lostConnection) return
         pauseShown = true
-        if (!isNet) s.setPaused(true)
+        if (!isNet) s.pauseGame(true)
         val c = col()
         c.addView(Ui.text(this, "Jeda", 26f, Pal.KUNYIT, 2))
         if (isNet) c.addView(Ui.text(this, "Pertandingan Bluetooth tetap berjalan saat jendela ini terbuka.", 12f))
@@ -139,7 +139,7 @@ class GameActivity : Activity() {
         c.addView(Ui.button(this, if (isNet) "Kembali ke Pertandingan" else "Lanjutkan", Kind.PRIMARY) {
             overlay.removeAllViews()
             pauseShown = false
-            if (!isNet) s.setPaused(false)
+            if (!isNet) s.pauseGame(false)
         })
         c.addView(gap(8))
         c.addView(Ui.button(this, if (isNet) "Tinggalkan Pertandingan" else "Keluar ke Menu") { leave() })
@@ -343,7 +343,7 @@ class GameActivity : Activity() {
         } else if (pauseShown) {
             overlay.removeAllViews()
             pauseShown = false
-            if (!isNet) session?.setPaused(false)
+            if (!isNet) session?.pauseGame(false)
         } else {
             showPause()
         }
