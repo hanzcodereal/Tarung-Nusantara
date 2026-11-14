@@ -1,0 +1,2 @@
+-keep class com.hanzdev.tarungnusantara.MainActivity { *; }
+-keep class com.hanzdev.tarungnusantara.game.GameActivity { *; }
